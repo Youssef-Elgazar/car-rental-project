@@ -15,8 +15,9 @@ export function App() {
           <li>Contact</li>
           <li>About</li>
           <li> <FontAwesomeIcon icon={faUser} />{" "}Sign In </li>
+          <button id="submit-listing-btn">Submit Listing</button>
+
         </ul>
-        <button id="submit-listing">Submit Listing</button>
       </nav>
     </div>
   );
