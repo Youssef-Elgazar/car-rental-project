@@ -1,24 +1,26 @@
+// src/components/FeatureCard.tsx
 import React from "react";
 
-const InfoCard = ({
-	title = "Default Title",
-	description = "Default Description",
-	image = "",
+interface FeatureCardProps {
+	title: string;
+	description: string;
+	className?: string;
+}
+
+const FeatureCard: React.FC<FeatureCardProps> = ({
+	title,
+	description,
+	className = "",
 }) => {
 	return (
-		<div className="w-full rounded-xl shadow-md bg-white p-3">
-			{image && (
-				<img
-					className="w-full h-20 object-contain p-1"
-					src={image}
-					alt={title}
-				/>
-			)}
-			<div className="p-1">
-				<h2 className="text-sm font-semibold text-center truncate">{title}</h2>
-			</div>
+		<div
+			className={`bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all ${className}`}
+		>
+			{" "}
+			<h3 className="text-xl font-semibold mb-2 text-gray-800">{title}</h3>
+			<p className="text-gray-600">{description}</p>
 		</div>
 	);
 };
 
-export default InfoCard;
+export default FeatureCard;

@@ -8,6 +8,33 @@
 	background-attachment: fixed;
 	background-position: center;
 	background-size: cover;
+	position: relative;
+	z-index: 1;
+}
+
+/* Mobile Menu Styles */
+@media (max-width: 768px) {
+	#nav-menu {
+		display: none; /* Hide desktop menu on mobile */
+	}
+
+	/* Mobile menu items */
+	.mobile-menu-overlay li a,
+	.mobile-menu-overlay li button {
+		min-height: 48px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 12px 16px;
+	}
+
+	/* Submit button specific styles */
+	.mobile-menu-overlay #submit-listing-btn {
+		width: 80%;
+		max-width: 280px;
+		margin: 16px auto 0;
+	}
 }
 
 nav {
@@ -42,6 +69,10 @@ nav li:hover {
 	background: #ffffff;
 	border: 1px solid #ffffff;
 	border-radius: 46px;
+}
+
+#submit-listing-btn:hover {
+	background-color: #e7e5e5;
 }
 
 #search-area {
