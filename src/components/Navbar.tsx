@@ -1,4 +1,3 @@
-// src/components/Navbar.tsx
 import React, { useState } from "react";
 import { FaUser, FaTimes, FaBars } from "react-icons/fa";
 
@@ -7,7 +6,6 @@ const Navbar = () => {
 
 	return (
 		<nav className="w-full h-[7vh] flex justify-between items-center px-4">
-			{/* Logo */}
 			<div id="logo">WHEELZ</div>
 
 			{/* Desktop Navigation */}

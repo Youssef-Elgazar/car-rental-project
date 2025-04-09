@@ -1,7 +1,5 @@
-// PopularMakesSection.tsx
 import React from "react";
 
-// Card Component (only component we'll use)
 const VehicleCard = ({
 	title,
 	description,
@@ -44,14 +42,12 @@ const VehicleCard = ({
 	</div>
 );
 
-// Main Section (pure JSX/Tailwind)
 const Showcase = () => {
 	return (
 		<section className="w-full p-8 mx-auto bg-[#050B20] text-white	">
 			<h1 className="text-3xl font-bold mb-8">Popular Makes</h1>
 
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-				{/* Card 1 */}
 				<VehicleCard
 					title="Audi A5 – 2023"
 					description="2.0 D5 PowerPulse Momentum 5dr AWD."
@@ -64,7 +60,6 @@ const Showcase = () => {
 					priceNote="$50,000"
 				/>
 
-				{/* Card 2 */}
 				<VehicleCard
 					title="Audi A4 – 2022"
 					description="2.0 D5 PowerPulse Momentum 5dr AWD."

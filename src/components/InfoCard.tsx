@@ -1,4 +1,3 @@
-// src/components/FeatureCard.tsx
 import React from "react";
 
 interface FeatureCardProps {
