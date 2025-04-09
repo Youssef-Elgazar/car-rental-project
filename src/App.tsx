@@ -3,6 +3,8 @@ import "./output.css";
 import Navbar from "./components/Navbar";
 import InfoCard from "./components/InfoCard";
 import FeatureCard from "./components/FeatureCard";
+import Showcase from "./components/Showcase";
+
 import {
 	FaSearch,
 	FaFacebookF,
@@ -82,7 +84,8 @@ export function App() {
 					/>
 				</div>
 			</div>
-			<section className="flex flex-col items-center justify-center py-6 px-4 bg-gray-50 w-full mx-auto">
+			<Showcase />
+			<section className="flex flex-col items-center justify-center py-15 px-4 bg-gray-50 w-full mx-auto">
 				<h2 className="text-2xl md:text-4xl font-bold text-left text-gray-800">
 					Why Choose Us?
 				</h2>
@@ -106,11 +109,11 @@ export function App() {
 					/>
 				</div>
 			</section>
-			<footer className="bg-[#0C0F1F] text-white px-6 md:px-20 py-12">
+			<footer className="bg-[#050B20] text-white px-6 md:px-20 py-12">
 				<div className="flex flex-col md:flex-row md:justify-between items-start md:items-center border-b border-gray-700 pb-8 mb-8">
 					<div>
 						<h3 className="text-lg font-semibold">Join Wheelz</h3>
-						<p className="text-lg font-semibold text-gray-700 ">
+						<p className="text-lg font-semibold text-gray-400 ">
 							Receive pricing updates, shopping tips & more!
 						</p>
 					</div>
@@ -208,12 +211,12 @@ export function App() {
 					<div className="col-span-2 md:col-span-1">
 						<h4 className="text-white font-semibold mb-2">Our Mobile App</h4>
 
-						<div className="grid h-48 grid-cols-2 place-content-start gap-2 ...">
+						<div className="flex space-x-4 mt-2 text-white text-lg">
 							<div>
 								<FaGooglePlay className="hover:text-lime-500 cursor-pointer" />
 							</div>
 							<div>
-								<FaAppStore className="hover:text-shadow-amber-100 cursor-pointer" />
+								<FaAppStore className="hover:text-cyan-500 cursor-pointer" />
 							</div>
 						</div>
 					</div>
@@ -221,9 +224,7 @@ export function App() {
 						<h4 className="text-white font-semibold mb-2">Connect With Us</h4>
 						<div className="flex space-x-4 mt-2 text-white text-lg">
 							<FaFacebookF className="hover:text-blue-500 cursor-pointer" />
-							<FaTwitter className="hover:text-blue-400 cursor-pointer" />
 							<FaInstagram className="hover:text-pink-500 cursor-pointer" />
-							<FaLinkedinIn className="hover:text-blue-600 cursor-pointer" />
 							<FaXTwitter className="hover:text-gray-950 cursor-pointer" />
 						</div>
 					</div>
