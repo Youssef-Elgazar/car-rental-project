@@ -91,7 +91,13 @@ export function App() {
 					/>
 				</div>
 			</div>
+			<footer>
+				<h2>hello 
+					footer
+				</h2>
+			</footer>
 		</div>
+
 	);
 }
 
