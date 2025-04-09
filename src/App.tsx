@@ -5,7 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import InfoCard from "./components/InfoCard";
-
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn  } from "react-icons/fa";
+import { FaXTwitter, FaGooglePlay,FaAppStore  } from "react-icons/fa6";
 export function App() {
 	return (
 		<div id="app">
@@ -91,10 +92,78 @@ export function App() {
 					/>
 				</div>
 			</div>
-			<footer>
-				<h2>hello 
-					footer
-				</h2>
+			<footer className="bg-[#0C0F1F] text-white px-6 md:px-20 py-12">
+				<div className="flex flex-col md:flex-row md:justify-between items-start md:items-center border-b border-gray-700 pb-8 mb-8">
+					<div>
+						<h3 className="text-lg font-semibold">Join Wheelz</h3>
+						<p className="text-lg font-semibold text-gray-700 ">Receive pricing updates, shopping tips & more!</p>
+					</div>
+					<div className="mt-4 md:mt-0 flex items-center">
+						<input
+							type="email"
+							placeholder="Your email address"
+							className="bg-gray-800 text-white px-4 py-2 rounded-l-full outline-none w-64"
+						/>
+						<button className="bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-r-full text-sm font-semibold">
+							Sign Up
+						</button>
+					</div>
+				</div>
+
+				<div className="grid grid-cols-2 md:grid-cols-6 gap-6 text-sm text-gray-400">
+					<div>
+						<h4 className="text-white font-semibold mb-2">Company</h4>
+						<ul>
+							{['About Us', 'Blog', 'Services', 'FAQs', 'Terms', 'Contact Us'].map(item => (
+								<li key={item} className="mb-1 hover:text-blue-600 cursor-pointer">{item}</li>
+							))}
+						</ul>
+					</div>
+					<div>
+						<h4 className="text-white font-semibold mb-2">Quick Links</h4>
+						<ul>
+							{['Get in Touch', 'Help center', 'Live chat', 'How it works'].map(item => (
+								<li key={item} className="mb-1 hover:text-blue-600 cursor-pointer">{item}</li>
+							))}
+						</ul>
+					</div>
+					<div>
+						<h4 className="text-white font-semibold mb-2">Brands like</h4>
+						<ul>
+							{['Toyota', 'Porsche', 'Ferrari', 'BMW', 'Rolls-Royce', 'BMW', 'Mercedes', 'Volkswagen'].map(item => (
+								<li key={item} className="mb-1 hover:text-blue-600 cursor-pointer">{item}</li>))
+							}
+						</ul>
+					</div>
+					<div>
+						<h4 className="text-white font-semibold mb-2">Vehicles Type</h4>
+						<ul>
+							{['Sedan', 'Hatchback', 'SUV', 'Hybrid', 'Electric', 'Coupe', 'Convertible'].map(item => (
+								<li key={item} className="mb-1 hover:text-blue-600 cursor-pointer">{item}</li>
+							))}
+						</ul>
+					</div>
+					<div className="col-span-2 md:col-span-1">
+						<h4 className="text-white font-semibold mb-2">Our Mobile App</h4>
+						
+							
+							
+						
+						<div className="grid h-48 grid-cols-2 place-content-start gap-2 ...">
+							  <div><FaGooglePlay className="hover:text-lime-500 cursor-pointer"/></div>
+							  <div><FaAppStore className="hover:text-shadow-amber-100 cursor-pointer"/></div>
+					</div></div>
+					<div className="col-span-2 md:col-span-1">
+						<h4 className="text-white font-semibold mb-2">Connect With Us</h4>
+						<div className="flex space-x-4 mt-2 text-white text-lg">
+							<FaFacebookF className="hover:text-blue-500 cursor-pointer" />
+							<FaTwitter className="hover:text-blue-400 cursor-pointer" />
+							<FaInstagram className="hover:text-pink-500 cursor-pointer" />
+							<FaLinkedinIn className="hover:text-blue-600 cursor-pointer" />
+							<FaXTwitter className="hover:text-gray-950 cursor-pointer" />
+						</div>
+					</div>
+				</div>
 			</footer>
 		</div>
 
