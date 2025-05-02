@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaUser, FaTimes, FaBars } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -10,15 +11,28 @@ const Navbar = () => {
 
 			{/* Desktop Navigation */}
 			<ul id="nav-menu" className="hidden md:flex items-center">
-				<li className="mr-4 hover:underline">Home</li>
-				<li className="mr-4 hover:underline">Listings</li>
-				<li className="mr-4 hover:underline">Contact</li>
-				<li className="mr-4 hover:underline">About</li>
 				<li className="mr-4 hover:underline">
-					<a href="#" className="flex justify-items-center items-center">
+					<Link to="/">Home</Link>
+				</li>
+				<li className="mr-4 hover:underline">
+					<Link to="/listings">Listings</Link>
+				</li>
+				<li className="mr-4 hover:underline">
+					<Link to="/contact">Contact</Link>
+				</li>
+				<li className="mr-4 hover:underline">
+					<Link to="/about">About</Link>
+				</li>
+				<li className="mr-4 hover:underline">
+					<Link to="/signin" className="flex justify-items-center items-center">
 						<FaUser className="" />
 						<span className="ml-1">Sign In</span>
-					</a>
+					</Link>
+				</li>
+				<li className="mr-4 hover:underline">
+					<Link to="/signup" className="flex justify-items-center items-center">
+						<span className="ml-1">Sign Up</span>
+					</Link>
 				</li>
 				<button
 					id="submit-listing-btn"
@@ -50,7 +64,7 @@ const Navbar = () => {
 							className="block py-3 text-xl text-white hover:text-blue-300 transition-colors"
 							onClick={() => setMobileMenuOpen(false)}
 						>
-							Home
+							<Link to="/">Home</Link>
 						</a>
 					</li>
 					<li>
@@ -59,7 +73,7 @@ const Navbar = () => {
 							className="block py-3 text-xl text-white hover:text-blue-300 transition-colors"
 							onClick={() => setMobileMenuOpen(false)}
 						>
-							Listings
+							<Link to="/listings">Listings</Link>
 						</a>
 					</li>
 					<li>
@@ -68,7 +82,7 @@ const Navbar = () => {
 							className="block py-3 text-xl text-white hover:text-blue-300 transition-colors"
 							onClick={() => setMobileMenuOpen(false)}
 						>
-							Contact
+							<Link to="/contact">Contact</Link>
 						</a>
 					</li>
 					<li>
@@ -77,7 +91,7 @@ const Navbar = () => {
 							className="block py-3 text-xl text-white hover:text-blue-300 transition-colors"
 							onClick={() => setMobileMenuOpen(false)}
 						>
-							About
+							<Link to="/about">About</Link>
 						</a>
 					</li>
 					<li>
