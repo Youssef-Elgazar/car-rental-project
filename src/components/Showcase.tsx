@@ -20,11 +20,7 @@ const VehicleCard = ({
 		<ul className="space-y-2 mb-4">
 			{features.map((feature, index) => (
 				<li key={index} className="flex items-center">
-					{feature.checked ? (
-						<span className="text-green-500 mr-2">✓</span>
-					) : (
-						<span className="text-gray-300 mr-2">○</span>
-					)}
+					<span className="text-gray-300 mr-2">•</span>
 					{feature.text}
 				</li>
 			))}

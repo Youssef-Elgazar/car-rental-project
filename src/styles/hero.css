@@ -2,7 +2,7 @@
 	height: 100vh;
 	width: 100%;
 	color: white;
-	background-image: url("../public/images/hero.jpg");
+	background-image: url("../assets/images/hero.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: center;

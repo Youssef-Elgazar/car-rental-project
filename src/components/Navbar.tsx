@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaUser, FaTimes, FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
 	return (
@@ -34,12 +34,14 @@ const Navbar = () => {
 						<span className="ml-1">Sign Up</span>
 					</Link>
 				</li>
-				<button
-					id="submit-listing-btn"
-					className="hover:bg-gray-100 transition-colors"
-				>
-					Submit Listing
-				</button>
+				{isLoggedIn && (
+					<button
+						id="submit-listing-btn"
+						className="hover:bg-gray-100 transition-colors"
+					>
+						Submit Listing
+					</button>
+				)}
 			</ul>
 
 			{/* Mobile Menu Button */}
@@ -104,15 +106,17 @@ const Navbar = () => {
 							Sign In
 						</a>
 					</li>
-					<li className="pt-4">
-						<button
-							id="submit-listing-btn"
-							className="w-full max-w-xs mx-auto py-3 rounded-full hover:bg-gray-100 transition-colors"
-							onClick={() => setMobileMenuOpen(false)}
-						>
-							Submit Listing
-						</button>
-					</li>
+					{isLoggedIn && (
+						<li className="pt-4">
+							<button
+								id="submit-listing-btn"
+								className="w-full max-w-xs mx-auto py-3 rounded-full hover:bg-gray-100 transition-colors"
+								onClick={() => setMobileMenuOpen(false)}
+							>
+								Submit Listing
+							</button>
+						</li>
+					)}
 				</ul>
 			</div>
 		</nav>
