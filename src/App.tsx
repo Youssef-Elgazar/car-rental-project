@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import axios from "axios";
 
 // Component imports
 import Navbar from "./components/Navbar";
@@ -10,7 +11,8 @@ import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import Contact from "./components/Contact";
 import About from "./components/About";
-import Listing from "./components/Listing";
+import Listings from "./components/Listings";
+import SubmitListing from "./components/SubmitListing";
 
 // Icon imports
 import { FaXTwitter, FaGooglePlay, FaAppStore } from "react-icons/fa6";
@@ -35,16 +37,46 @@ import "./output.css"; // Tailwind CSS (should be imported last)
 export function App() {
 	const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track login status
 
+	useEffect(() => {
+		const checkLoginStatus = async () => {
+			try {
+				const response = await axios.get(
+					"http://localhost:5000/api/users/check-session",
+					{
+						withCredentials: true, // Include cookies in the request
+					}
+				);
+				if (response.status === 200) {
+					setIsLoggedIn(true);
+				}
+			} catch (err) {
+				if (
+					axios.isAxiosError(err) &&
+					err.response &&
+					err.response.status === 401
+				) {
+					console.warn("Unauthorized: No valid session found.");
+				}
+				setIsLoggedIn(false);
+			}
+		};
+		checkLoginStatus();
+	}, []);
+
 	return (
 		<div id="app">
 			<Router>
 				<Navbar isLoggedIn={isLoggedIn} /> {/* Pass login state to Navbar */}
 				<Routes>
-					<Route path="/signin" element={<SignIn />} />
+					<Route
+						path="/signin"
+						element={<SignIn setIsLoggedIn={setIsLoggedIn} />}
+					/>
 					<Route path="/signup" element={<SignUp />} />
 					<Route path="/contact" element={<Contact />} />
 					<Route path="/about" element={<About />} />
-					<Route path="/listings" element={<Listing />} />
+					<Route path="/listings" element={<Listings />} />
+					<Route path="/submit-listing" element={<SubmitListing />} />
 					<Route
 						path="/"
 						element={
@@ -176,9 +208,9 @@ export function App() {
 									"FAQs",
 									"Terms",
 									"Contact Us",
-								].map((item) => (
+								].map((item, index) => (
 									<li
-										key={item}
+										key={`company-${index}`}
 										className="mb-1 hover:text-blue-600 cursor-pointer"
 									>
 										{item}
@@ -194,9 +226,9 @@ export function App() {
 									"Help center",
 									"Live chat",
 									"How it works",
-								].map((item) => (
+								].map((item, index) => (
 									<li
-										key={item}
+										key={`quicklinks-${index}`}
 										className="mb-1 hover:text-blue-600 cursor-pointer"
 									>
 										{item}
@@ -213,12 +245,12 @@ export function App() {
 									"Ferrari",
 									"BMW",
 									"Rolls-Royce",
-									"BMW",
+
 									"Mercedes",
 									"Volkswagen",
-								].map((item) => (
+								].map((item, index) => (
 									<li
-										key={item}
+										key={`brands-${index}`}
 										className="mb-1 hover:text-blue-600 cursor-pointer"
 									>
 										{item}
@@ -237,9 +269,9 @@ export function App() {
 									"Electric",
 									"Coupe",
 									"Convertible",
-								].map((item) => (
+								].map((item, index) => (
 									<li
-										key={item}
+										key={`vehicles-${index}`}
 										className="mb-1 hover:text-blue-600 cursor-pointer"
 									>
 										{item}

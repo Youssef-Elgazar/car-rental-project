@@ -1,13 +1,32 @@
 import React, { useState } from "react";
 import { FaUser, FaTimes, FaBars } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { logout } from "../api"; // Import the logout function
 
 const Navbar = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+	const navigate = useNavigate();
+
+	const handleSignOut = async () => {
+		try {
+			await logout(); // Call the server to clear the cookie
+			navigate("/signin"); // Redirect to sign-in page
+			window.location.reload(); // Reload to reset state
+		} catch (error) {
+			console.error("Failed to sign out", error);
+		}
+	};
+
+	const handleSubmitListing = () => {
+		navigate("/submit-listing");
+		setMobileMenuOpen(false); // Close mobile menu if open
+	};
 
 	return (
-		<nav className="w-full h-[7vh] flex justify-between items-center px-4">
-			<div id="logo">WHEELZ</div>
+		<nav className="w-full h-[7vh] flex justify-between items-center px-4 py-6">
+			<div className="cursor-default" id="logo">
+				WHEELZ
+			</div>
 
 			{/* Desktop Navigation */}
 			<ul id="nav-menu" className="hidden md:flex items-center">
@@ -23,21 +42,41 @@ const Navbar = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 				<li className="mr-4 hover:underline">
 					<Link to="/about">About</Link>
 				</li>
-				<li className="mr-4 hover:underline">
-					<Link to="/signin" className="flex justify-items-center items-center">
-						<FaUser className="" />
-						<span className="ml-1">Sign In</span>
-					</Link>
-				</li>
-				<li className="mr-4 hover:underline">
-					<Link to="/signup" className="flex justify-items-center items-center">
-						<span className="ml-1">Sign Up</span>
-					</Link>
-				</li>
+				{!isLoggedIn ? (
+					<>
+						<li className="mr-4 hover:underline">
+							<Link
+								to="/signin"
+								className="flex justify-items-center items-center"
+							>
+								<FaUser className="" />
+								<span className="ml-1">Sign In</span>
+							</Link>
+						</li>
+						<li className="mr-4 hover:underline">
+							<Link
+								to="/signup"
+								className="flex justify-items-center items-center"
+							>
+								<span className="ml-1">Sign Up</span>
+							</Link>
+						</li>
+					</>
+				) : (
+					<li className="mr-4 hover:underline">
+						<button
+							onClick={handleSignOut}
+							className="flex justify-items-center items-center transition-colors"
+						>
+							<span className="ml-1">Sign Out</span>
+						</button>
+					</li>
+				)}
 				{isLoggedIn && (
 					<button
 						id="submit-listing-btn"
-						className="hover:bg-gray-100 transition-colors"
+						className="bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded shadow transition-colors py-1 px-3 text-sm"
+						onClick={handleSubmitListing}
 					>
 						Submit Listing
 					</button>
@@ -61,57 +100,79 @@ const Navbar = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 			>
 				<ul className="w-full px-6 space-y-6 text-center">
 					<li>
-						<a
-							href="#"
+						<Link
+							to="/"
 							className="block py-3 text-xl text-white hover:text-blue-300 transition-colors"
 							onClick={() => setMobileMenuOpen(false)}
 						>
-							<Link to="/">Home</Link>
-						</a>
+							Home
+						</Link>
 					</li>
 					<li>
-						<a
-							href="#"
+						<Link
+							to="/listings"
 							className="block py-3 text-xl text-white hover:text-blue-300 transition-colors"
 							onClick={() => setMobileMenuOpen(false)}
 						>
-							<Link to="/listings">Listings</Link>
-						</a>
+							Listings
+						</Link>
 					</li>
 					<li>
-						<a
-							href="#"
+						<Link
+							to="/contact"
 							className="block py-3 text-xl text-white hover:text-blue-300 transition-colors"
 							onClick={() => setMobileMenuOpen(false)}
 						>
-							<Link to="/contact">Contact</Link>
-						</a>
+							Contact
+						</Link>
 					</li>
 					<li>
-						<a
-							href="#"
+						<Link
+							to="/about"
 							className="block py-3 text-xl text-white hover:text-blue-300 transition-colors"
 							onClick={() => setMobileMenuOpen(false)}
 						>
-							<Link to="/about">About</Link>
-						</a>
+							About
+						</Link>
 					</li>
-					<li>
-						<a
-							href="#"
-							className="flex items-center justify-center py-3 text-xl text-white hover:text-blue-300 transition-colors"
-							onClick={() => setMobileMenuOpen(false)}
-						>
-							<FaUser className="mr-2" />
-							Sign In
-						</a>
-					</li>
+					{!isLoggedIn ? (
+						<>
+							<li>
+								<Link
+									to="/signin"
+									className="flex items-center justify-center py-3 text-xl text-white hover:text-blue-300 transition-colors"
+									onClick={() => setMobileMenuOpen(false)}
+								>
+									<FaUser className="mr-2" />
+									Sign In
+								</Link>
+							</li>
+							<li>
+								<Link
+									to="/signup"
+									className="block py-3 text-xl text-white hover:text-blue-300 transition-colors"
+									onClick={() => setMobileMenuOpen(false)}
+								>
+									Sign Up
+								</Link>
+							</li>
+						</>
+					) : (
+						<li className="pt-4">
+							<button
+								onClick={handleSignOut}
+								className="block py-3 text-xl text-white hover:text-blue-300 transition-colors"
+							>
+								Sign Out
+							</button>
+						</li>
+					)}
 					{isLoggedIn && (
 						<li className="pt-4">
 							<button
 								id="submit-listing-btn"
-								className="w-full max-w-xs mx-auto py-3 rounded-full hover:bg-gray-100 transition-colors"
-								onClick={() => setMobileMenuOpen(false)}
+								className="w-full max-w-xs mx-auto py-2 px-4 rounded-full hover:bg-gray-100 transition-colors text-sm"
+								onClick={handleSubmitListing}
 							>
 								Submit Listing
 							</button>
