@@ -12,6 +12,7 @@ const ListingSchema = new mongoose.Schema({
 	fuel: { type: String, required: true, default: "Petrol" },
 	transmission: { type: String, required: true, default: "Automatic" },
 	category: { type: String, required: true, default: "Sedan" },
+	userId: { type: String, required: true } // Add userId field to track the creator
 });
 
 module.exports = mongoose.model("Listing", ListingSchema);
