@@ -8,7 +8,7 @@ const cookieParser = require("cookie-parser"); // Import cookie-parser
 // Import routes
 const userRoutes = require("./routes/usersRoutes");
 const listingRoutes = require("./routes/listingsRoutes");
-
+const buyNowRoutes = require('./routes/buyNowRoutes');
 const app = express();
 
 // Middlewares
@@ -24,7 +24,7 @@ app.use(cookieParser()); // Use cookie-parser
 // Routes
 app.use("/api/users", userRoutes); // Ensure the usersRoutes is correctly configured to handle the /check-session route
 app.use("/api/listings", listingRoutes);
-
+app.use('/api/bookings', buyNowRoutes);
 // MongoDB connection
 mongoose
 	.connect(process.env.MONGO_URI)

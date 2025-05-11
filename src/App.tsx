@@ -14,6 +14,7 @@ import About from "./components/About";
 import Listings from "./components/Listings";
 import SubmitListing from "./components/SubmitListing";
 import ChatbotWidget from "./components/ChatbotWidget";
+import BuyNow from "./components/BuyNow";
 
 // Icon imports
 import { FaXTwitter, FaGooglePlay, FaAppStore } from "react-icons/fa6";
@@ -78,6 +79,7 @@ export function App() {
 					<Route path="/about" element={<About />} />
 					<Route path="/listings" element={<Listings />} />
 					<Route path="/submit-listing" element={<SubmitListing />} />
+					<Route path="/buy-now" element={<BuyNow />} />
 					<Route
 						path="/"
 						element={
