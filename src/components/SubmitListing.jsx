@@ -44,7 +44,7 @@ const SubmitListing = () => {
       console.error('Error submitting listing:', error);
       setError(error.response?.data?.error || 'Error submitting listing');
     };
-    const navigate = useNavigate();
+    
 
   };
 
