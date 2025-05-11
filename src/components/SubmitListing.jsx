@@ -43,7 +43,9 @@ const SubmitListing = () => {
     } catch (error) {
       console.error('Error submitting listing:', error);
       setError(error.response?.data?.error || 'Error submitting listing');
-    }
+    };
+    const navigate = useNavigate();
+
   };
 
   return (
@@ -54,6 +56,15 @@ const SubmitListing = () => {
           {error}
         </div>
       )}
+      <div className="flex items-center mb-6">
+        <button 
+          onClick={() => navigate(-1)}
+          className="mr-4 text-blue-600 hover:text-blue-800"
+        >
+          &larr; Back
+        </button>
+        <h2 className="text-2xl font-bold">Complete Your Booking</h2>
+      </div>
       <form onSubmit={handleSubmit} className="max-w-lg">
         <div className="mb-4">
           <label className="block mb-2">Brand</label>
@@ -189,6 +200,7 @@ const SubmitListing = () => {
           Submit Listing
         </button>
       </form>
+      
     </div>
   );
 };
